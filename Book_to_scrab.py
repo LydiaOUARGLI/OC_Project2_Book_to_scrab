@@ -221,5 +221,5 @@ for i  in range(2,len(category_links)):
                 Récupération_url_image_et_telechargement()
 
         #### Revenir dans le dossier catégorie et créer le fichier csv contenant les données
-            changeDir(f'C:/Users/glk_u/Documents/lydia_doc/OC_Projet_2/Sortie/{category}')
+            changeDir(f'{New_path}{category}')
             CSV_data(category)
