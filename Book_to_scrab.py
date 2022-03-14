@@ -30,10 +30,6 @@ category_list = []         ### Liste des catégories
 ## Retourner au répértoire principal
 Directory = os.getcwd()
 
-
-
-
-
 ## Fonction pour changer de répértoir, nécéssaire pour l'hiérarchei de stockage des livres selon le typ des données à enregistrer et la catégorie
 def changeDir(newPath):
   if os.path.exists(newPath):
@@ -57,7 +53,8 @@ def Image_download(r, filename):
 
     title = ''.join(char for char in titles if char.isalnum())
     new_title, fext = os.path.splitext(title)
-    os.rename(filename, new_title + '.png')
+    os.path.exists(new_title)
+    os.rename(filename, new_title+'_2'+ '.png')
 
 # Fonction de récupération des url des images et téléchargement
 def Récupération_url_image_et_telechargement():
@@ -73,7 +70,6 @@ def Récupération_url_image_et_telechargement():
     r = requests.get(url_image, stream=True)
     Image_download(r, filename)
 
-
 #Fonction pour création de fichier csv des données récupérées
 def CSV_data(category):
     en_tete = ["product_page_url", "universal_ product_code (upc)", 'title', "price_including_tax",
@@ -85,7 +81,7 @@ def CSV_data(category):
                                                             description_list, rating_list, image_url):
             writer.writerow([Bl, cup, tit, ttc, ht, av, des, rat, img])
 
-
+#Fonction pour récuperer les liens de toutes les pages supplémentaires de chaque catégorie
 def pagination(category_links):
     cat_page.append(category_links[i])
     for k in range(2, 1000):
@@ -98,11 +94,7 @@ def pagination(category_links):
             break
     print(cat_page)
 
-
-
-
 ## Parcourir le site principal et récupération d'une liste comportant les liens de la première page de chaque catégories
-
 URL = 'http://books.toscrape.com/'                                            ### URL principal du site à gratter
 global_reponse = requests.get(URL)
 if global_reponse.ok:
