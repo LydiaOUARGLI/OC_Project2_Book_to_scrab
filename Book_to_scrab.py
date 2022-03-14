@@ -52,10 +52,15 @@ def Image_download(r, filename):
         print("Image Couldn't be retreived")
 
     title = ''.join(char for char in titles if char.isalnum())
-    new_title, fext = os.path.splitext(title)
-    os.path.exists(new_title)
-    os.rename(filename, new_title+'_2'+ '.png')
 
+    new_title, fext = os.path.splitext(title)
+
+    #if os.path.exists(new_title)==False:
+    try:
+       os.rename(filename, new_title+'.png')
+
+    except IOError:
+        os.rename(filename, new_title + '_2' + '.png')
 # Fonction de récupération des url des images et téléchargement
 def Récupération_url_image_et_telechargement():
     img = soup2.find('img')
