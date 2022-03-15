@@ -56,7 +56,7 @@ Installation Packages
 Le fichier requierement.txt contient tous les packages nécessaire pour
 l'éxécution du code Book\_to\_scrab.py
 
-\$ pip install -r requierement.txt
+\$ pip install -r requirement.txt
 
 Exécution du script
 -------------------
